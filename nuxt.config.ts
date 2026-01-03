@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'EventosIA',
+      title: 'Origiinales',
       htmlAttrs: { lang: 'es' },
       meta: [
         { charset: 'utf-8' },
@@ -21,20 +21,18 @@ export default defineNuxtConfig({
       script: [
         {
           src: 'https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js',
-          async: true,
-          id: 'snipcart',
-          'data-config-modal-style': 'side',
-          'data-api-key': process.env.NUXT_PUBLIC_SNIPCART_KEY || ''
+          async: true
         }
       ],
       link: [
-        { rel: 'stylesheet', href: 'https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css' }
+        { rel: 'stylesheet', href: 'https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css' },
+        { rel: 'icon', type: 'image/png', href: '/logo_sin_fondo.png' }
       ]
     }
   },
   runtimeConfig: {
     public: {
-      snipcartKey: '' // NUXT_PUBLIC_SNIPCART_KEY
+      snipcartKey: process.env.NUXT_PUBLIC_SNIPCART_KEY || ''
     }
   }
 })

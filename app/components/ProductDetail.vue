@@ -4,7 +4,7 @@
       <!-- Image gallery -->
       <div class="flex flex-col-reverse">
         <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden sm:aspect-w-2 sm:aspect-h-3">
-          <img :src="product.image" :alt="product.name" class="w-full h-full object-center object-cover sm:rounded-lg" />
+          <img :src="product.image" :alt="product.name" class="w-full h-full object-center object-cover sm:rounded-lg" >
         </div>
       </div>
 

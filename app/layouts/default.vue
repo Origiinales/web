@@ -22,6 +22,22 @@
               {{ link.text }}
             </NuxtLink>
           </div>
+          <div class="flex items-center space-x-4">
+            <!-- Snipcart Button -->
+            <button class="snipcart-checkout flex items-center space-x-2 text-brand-dark hover:text-brand-gold transition-colors font-medium relative group cursor-pointer">
+              <span class="sr-only">Ver carrito</span>
+              <div class="relative">
+                <!-- Icono de bolsa de compra -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                </svg>
+                <span class="snipcart-items-count absolute -top-2 -right-2 bg-brand-gold text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center transform scale-0 snipcart-items-count:scale-100 transition-transform empty:hidden">
+                  0
+                </span>
+              </div>
+              <span class="snipcart-total-price hidden sm:block text-sm font-sans" />
+            </button>
+          </div>
           <div class="-mr-2 flex items-center sm:hidden">
             <!-- Mobile menu button -->
             <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-brand-pink focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-gold" aria-controls="mobile-menu" :aria-expanded="isOpen" @click="isOpen = !isOpen">
@@ -93,8 +109,8 @@ const isOpen = ref(false)
 
 const links = [
   { text: 'Inicio', to: '/' },
-  { text: 'Tienda', to: '/shop' },
-  { text: 'Servicios', to: '/services' },
-  { text: 'Contacto', to: '/contact' }
+  { text: 'Tienda', to: '/tienda' },
+  { text: 'Servicios', to: '/servicios' },
+  { text: 'Contacto', to: '/contacto' }
 ]
 </script>

@@ -10,3 +10,18 @@
   --font-serif: "Playfair Display", serif; /* Títulos elegantes */
   --font-sans: "Inter", sans-serif;        /* Cuerpo de texto limpio */
 }
+
+/* Overrides de Snipcart para usar nuestras variables */
+#snipcart {
+  --color-modalBg: var(--color-brand-lilac);
+  --color-buttonPrimary: var(--color-brand-gold);
+  --color-buttonPrimaryHover: var(--color-brand-dark);
+  --color-link: var(--color-brand-dark);
+}
+/* Forzar fuentes */ 
+.snipcart-modal { 
+ font-family: var(--font-sans) !important; 
+} 
+.snipcart-modal__header { 
+ font-family: var(--font-serif) !important; 
+}

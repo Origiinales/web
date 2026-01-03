@@ -6,10 +6,9 @@
         <!-- Logo with multiply blend mode -->
         <div class="mb-8 p-4">
            <img 
-            src="/logo_recortado.webp" 
+            src="/logo_sin_fondo.png" 
             alt="Origiinales Logo" 
-            class="h-24 md:h-32 w-auto mix-blend-multiply"
-            style="mask-image: radial-gradient(circle, black 70%, transparent 75%); -webkit-mask-image: radial-gradient(circle, black 70%, transparent 75%);"
+            class="h-48 md:h-64 w-auto mix-blend-multiply"
           >
         </div>
         
@@ -27,7 +26,7 @@
           <div class="relative order-1 md:order-1">
             <div class="aspect-w-3 aspect-h-4 rounded-2xl overflow-hidden shadow-xl bg-brand-mint">
               <img 
-                src="https://placehold.co/600x800" 
+                src="https://placehold.co/500x600" 
                 alt="Creadora de Origiinales" 
                 class="object-cover w-full h-full transform hover:scale-105 transition-transform duration-700"
               >
@@ -51,7 +50,7 @@
 
             <div class="pt-4">
               <NuxtLink 
-                to="/shop" 
+                to="/tienda" 
                 class="inline-block bg-brand-gold text-white px-8 py-3 rounded-full font-sans font-medium hover:opacity-90 transition-opacity shadow-md"
               >
                 Ver Catálogo
