@@ -91,7 +91,7 @@
           </div>
           <div>
             <h3 class="text-lg font-serif font-semibold mb-4 text-brand-gold">Contacto</h3>
-            <p class="text-gray-400 text-sm">info@eventosia.com</p>
+            <p class="text-gray-400 text-sm">origiinalcreaciones@gmail.com</p>
           </div>
         </div>
         <div class="mt-8 border-t border-gray-700/30 pt-8 text-center">
