@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-dark: #3C3C3C; /* Gris oscuro para textos y el logo */
+  --color-brand-gold: #C4A661; /* Dorado para detalles y tallos */
+  --color-brand-pink: #F9EAEA; /* Acuarela rosa suave */
+  --color-brand-lilac: #F0EEF8; /* Acuarela lila suave */
+  --color-brand-mint: #F3F8F3; /* Acuarela menta suave */
+
+  --font-serif: "Playfair Display", serif; /* Títulos elegantes */
+  --font-sans: "Inter", sans-serif;        /* Cuerpo de texto limpio */
+}
