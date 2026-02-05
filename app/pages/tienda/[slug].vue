@@ -194,12 +194,17 @@ useHead({
             :data-item-description="product.description"
             :data-item-image="product.image"
             :data-item-name="product.title"
-            :data-item-custom1-name="product.isCustomizable ? 'Personalización' : null"
-            :data-item-custom1-value="product.isCustomizable ? customName : null"
-            :data-item-custom1-type="product.isCustomizable ? 'text' : null"
-            :data-item-custom2-name="product.isCustomizable && customDate ? 'Fecha' : null"
-            :data-item-custom2-value="product.isCustomizable && customDate ? customDate : null"
-            :data-item-custom2-type="product.isCustomizable && customDate ? 'text' : null"
+            v-bind="{
+              ...(product.isCustomizable && customName ? {
+                'data-item-custom1-name': 'Personalización',
+                'data-item-custom1-value': customName,
+                'data-item-custom1-required': 'true'
+              } : {}),
+              ...(product.isCustomizable && customDate ? {
+                'data-item-custom2-name': 'Fecha del evento',
+                'data-item-custom2-value': customDate
+              } : {})
+            }"
             :disabled="product.isCustomizable && !customName"
           >
             <span v-if="product.isCustomizable && !customName">
