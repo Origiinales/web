@@ -43,7 +43,7 @@ const { data: services } = await useAsyncData('services', () => fetchServices())
             <img
               :src="servicio.mainImage"
               :alt="servicio.title"
-              class="w-full aspect-[4/3] object-cover rounded-2xl shadow-lg"
+              class="w-full aspect-4/3 object-cover rounded-2xl shadow-lg"
               loading="lazy"
             >
           </div>
