@@ -72,9 +72,12 @@ Crea un archivo `.env` en la raíz del proyecto:
 
 ```env
 NUXT_PUBLIC_SNIPCART_KEY=tu_clave_publica_de_snipcart
+NUXT_CONTENTFUL_SPACE_ID=tu_space_id
+NUXT_CONTENTFUL_ACCESS_TOKEN=tu_access_token
 ```
 
 > **Nota**: Obtén tu clave de Snipcart en [snipcart.com](https://snipcart.com/)
+> **Nota**: Obtén tu clave de Contentful en [contentful.com](https://contentful.com/)
 
 ### Comandos Disponibles
 
@@ -107,28 +110,6 @@ El proyecto utiliza una paleta de colores personalizada definida en `app/assets/
 - **Títulos**: Playfair Display (serif) - Elegante y sofisticado
 - **Cuerpo**: Inter (sans-serif) - Limpio y legible
 
-## 🛒 Configuración de Snipcart
-
-El proyecto está configurado para usar Snipcart v3. Para añadir productos:
-
-1. Define los productos en tus páginas usando el componente `ProductButton`
-2. Asegúrate de incluir todos los atributos requeridos:
-   - `data-item-id`: ID único del producto
-   - `data-item-price`: Precio del producto
-   - `data-item-name`: Nombre del producto
-   - `data-item-url`: URL del producto
-
-Ejemplo:
-
-```vue
-<ProductButton
-  :id="producto.id"
-  :name="producto.name"
-  :price="producto.price"
-  :url="`/tienda/${producto.slug}`"
-/>
-```
-
 ## 📦 Deployment
 
 ### Netlify (Recomendado)
@@ -136,8 +117,10 @@ Ejemplo:
 1. Conecta tu repositorio a Netlify
 2. Configura las variables de entorno:
    - `NUXT_PUBLIC_SNIPCART_KEY`
-3. Build command: `pnpm generate`
-4. Publish directory: `.output/public`
+   - `NUXT_CONTENTFUL_SPACE_ID`
+   - `NUXT_CONTENTFUL_ACCESS_TOKEN`
+3. Build command: `pnpm run generate`
+4. Publish directory: `dist`
 
 ### Otras Plataformas
 
