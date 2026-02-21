@@ -20,7 +20,7 @@
             <h2 class="text-2xl font-serif text-brand-dark mb-6">Contacto Directo</h2>
             
             <a 
-              href="https://wa.me/34600000000?text=Hola,%20me%20gustaría%20más%20información%20sobre..." 
+              href="https://wa.me/34617899547?text=Hola,%20me%20gustaría%20más%20información%20sobre..." 
               target="_blank"
               rel="noopener noreferrer"
               class="group flex items-center justify-center gap-3 w-full bg-brand-gold hover:bg-brand-gold/80 text-white py-4 px-6 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg mb-8 transform hover:-translate-y-0.5"

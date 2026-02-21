@@ -55,7 +55,7 @@ const whatsappLink = computed(() => {
   const text = encodeURIComponent(
     `Hola, me interesa pedir gran volumen del producto ${product.value!.title}`
   )
-  return `https://wa.me/?text=${text}`
+  return `https://wa.me/34617899547?text=${text}`
 })
 </script>
 
