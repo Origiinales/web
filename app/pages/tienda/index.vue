@@ -130,7 +130,7 @@ const filteredProducts = computed(() => {
             <!-- Product Info -->
             <div class="mt-auto">
               <span class="text-xs text-brand-gold uppercase tracking-wider mb-1 block">
-                {{ product.categorySlug }}
+                {{ product.categoryName }}
               </span>
               <h2 class="font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors duration-200 mb-1 line-clamp-2">
                 {{ product.title }}

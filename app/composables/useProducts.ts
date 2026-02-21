@@ -17,6 +17,7 @@ export interface Product {
   description: string
   isCustomizable: boolean
   categorySlug: string
+  categoryName: string
   mainImage: string
   allImages: string[]
   minQuantity: number
@@ -83,6 +84,7 @@ export function useProducts() {
     const categoriaEntry = f['categoria'] as Record<string, unknown> | undefined
     const categoriaFields = categoriaEntry?.['fields'] as Record<string, unknown> | undefined
     const categorySlug = categoriaFields?.['slug'] ? String(categoriaFields['slug']) : 'otros'
+    const categoryName = categoriaFields?.['nombre'] ? String(categoriaFields['nombre']) : ''
 
     // Rich Text → HTML
     let description = ''
@@ -107,6 +109,7 @@ export function useProducts() {
       description,
       isCustomizable: Boolean(f['es_personalizable']),
       categorySlug,
+      categoryName,
       mainImage: mainImageUrl,
       allImages,
       minQuantity: minQty,
