@@ -32,7 +32,9 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      snipcartKey: process.env.NUXT_PUBLIC_SNIPCART_KEY || ''
+      snipcartKey: process.env.NUXT_PUBLIC_SNIPCART_KEY || '',
+      contentfulSpaceId: process.env.NUXT_CONTENTFUL_SPACE_ID || '',
+      contentfulAccessToken: process.env.NUXT_CONTENTFUL_ACCESS_TOKEN || ''
     }
   }
 })

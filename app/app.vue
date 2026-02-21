@@ -2,10 +2,10 @@
   <NuxtLayout>
     <NuxtPage />
     <div
-      id="snipcart" 
-      hidden
-      :data-api-key="snipcartKey" 
-      data-config-modal-style="side" 
+      id="snipcart"
+      :hidden="true"
+      :data-api-key="snipcartKey"
+      data-config-modal-style="side"
       data-currency="eur"
     />
   </NuxtLayout>

@@ -24,7 +24,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
           <!-- Image Column -->
           <div class="relative order-1 md:order-1">
-            <div class="aspect-w-3 aspect-h-4 rounded-2xl overflow-hidden shadow-xl bg-brand-mint">
+            <div class="aspect-3/4 rounded-2xl overflow-hidden shadow-xl bg-brand-mint">
               <img 
                 src="https://placehold.co/500x600" 
                 alt="Creadora de Origiinales" 
