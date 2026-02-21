@@ -70,26 +70,70 @@
 
         <!-- Columna Derecha: Formulario -->
         <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-brand-lilac/50">
-          <form 
-            name="contacto" 
-            method="POST" 
-            data-netlify="true" 
+
+          <!-- Estado: Éxito -->
+          <div v-if="formState === 'success'" class="flex flex-col items-center justify-center h-full py-12 text-center">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
+              <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-serif text-brand-dark mb-3">¡Mensaje enviado!</h3>
+            <p class="text-gray-600 font-sans mb-8">
+              Gracias por escribirme. Te responderé en menos de 24 horas. 🎉
+            </p>
+            <button
+              class="bg-brand-dark text-white font-medium py-3 px-8 rounded-xl transition-all duration-300 hover:bg-opacity-90 cursor-pointer"
+              @click="resetForm"
+            >
+              Enviar otro mensaje
+            </button>
+          </div>
+
+          <!-- Estado: Error -->
+          <div v-else-if="formState === 'error'" class="flex flex-col items-center justify-center h-full py-12 text-center">
+            <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mb-6">
+              <svg class="w-10 h-10 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-serif text-brand-dark mb-3">Algo salió mal</h3>
+            <p class="text-gray-600 font-sans mb-8">
+              No se pudo enviar el mensaje. Por favor, escríbeme directamente a
+              <a href="mailto:origiinalcreaciones@gmail.com" class="text-brand-gold hover:underline">origiinalcreaciones@gmail.com</a>
+            </p>
+            <button
+              class="bg-brand-dark text-white font-medium py-3 px-8 rounded-xl transition-all duration-300 hover:bg-opacity-90 cursor-pointer"
+              @click="resetForm"
+            >
+              Intentar de nuevo
+            </button>
+          </div>
+
+          <!-- Estado: Formulario -->
+          <form
+            v-else
+            name="contacto"
+            method="POST"
+            data-netlify="true"
             netlify-honeypot="bot-field"
             class="space-y-6"
+            @submit.prevent="handleSubmit"
           >
             <!-- Netlify Hidden Inputs -->
-            <input type="hidden" name="form-name" value="contacto" >
+            <input type="hidden" name="form-name" value="contacto">
             <div class="hidden">
-              <input name="bot-field" >
+              <input name="bot-field">
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="space-y-2">
                 <label for="name" class="block text-sm font-medium text-gray-700 font-sans">Nombre</label>
-                <input 
-                  id="name" 
-                  type="text" 
-                  name="name" 
+                <input
+                  id="name"
+                  v-model="formData.name"
+                  type="text"
+                  name="name"
                   required
                   class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all placeholder-gray-400 bg-gray-50 focus:bg-white"
                   placeholder="Tu nombre"
@@ -98,10 +142,11 @@
 
               <div class="space-y-2">
                 <label for="email" class="block text-sm font-medium text-gray-700 font-sans">Email</label>
-                <input 
-                  id="email" 
-                  type="email" 
-                  name="email" 
+                <input
+                  id="email"
+                  v-model="formData.email"
+                  type="email"
+                  name="email"
                   required
                   class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all placeholder-gray-400 bg-gray-50 focus:bg-white"
                   placeholder="tu@email.com"
@@ -113,12 +158,13 @@
               <div class="space-y-2">
                 <label for="event-type" class="block text-sm font-medium text-gray-700 font-sans">Tipo de Evento</label>
                 <div class="relative">
-                  <select 
-                    id="event-type" 
+                  <select
+                    id="event-type"
+                    v-model="formData.eventType"
                     name="event-type"
                     class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all appearance-none bg-gray-50 focus:bg-white"
                   >
-                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="" disabled>Selecciona una opción</option>
                     <option value="Boda">Boda</option>
                     <option value="Bautizo">Bautizo</option>
                     <option value="Comunión">Comunión</option>
@@ -135,9 +181,10 @@
 
               <div class="space-y-2">
                 <label for="date" class="block text-sm font-medium text-gray-700 font-sans">Fecha del evento</label>
-                <input 
-                  id="date" 
-                  type="date" 
+                <input
+                  id="date"
+                  v-model="formData.date"
+                  type="date"
                   name="date"
                   class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all bg-gray-50 focus:bg-white text-gray-600"
                 >
@@ -146,27 +193,93 @@
 
             <div class="space-y-2">
               <label for="message" class="block text-sm font-medium text-gray-700 font-sans">Cuéntame más</label>
-              <textarea 
-                id="message" 
-                name="message" 
-                rows="4" 
+              <textarea
+                id="message"
+                v-model="formData.message"
+                name="message"
+                rows="4"
                 class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all placeholder-gray-400 bg-gray-50 focus:bg-white resize-none"
                 placeholder="Detalles, ideas, número aproximado de invitados..."
               />
             </div>
 
-            <button 
+            <button
               type="submit"
-              class="w-full bg-brand-dark hover:bg-opacity-90 text-white font-medium py-4 px-6 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer"
+              :disabled="formState === 'loading'"
+              class="w-full bg-brand-dark hover:bg-opacity-90 text-white font-medium py-4 px-6 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
             >
-              <span>Solicitar Presupuesto</span>
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
+              <!-- Cargando -->
+              <template v-if="formState === 'loading'">
+                <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                <span>Enviando...</span>
+              </template>
+              <!-- Normal -->
+              <template v-else>
+                <span>Solicitar Presupuesto</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </template>
             </button>
           </form>
+
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+type FormState = 'idle' | 'loading' | 'success' | 'error'
+
+const formState = ref<FormState>('idle')
+
+const formData = reactive({
+  name: '',
+  email: '',
+  eventType: '',
+  date: '',
+  message: '',
+})
+
+async function handleSubmit() {
+  formState.value = 'loading'
+
+  try {
+    const body = new URLSearchParams({
+      'form-name': 'contacto',
+      name: formData.name,
+      email: formData.email,
+      'event-type': formData.eventType,
+      date: formData.date,
+      message: formData.message,
+    })
+
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+    })
+
+    if (response.ok) {
+      formState.value = 'success'
+    } else {
+      formState.value = 'error'
+    }
+  } catch {
+    formState.value = 'error'
+  }
+}
+
+function resetForm() {
+  formData.name = ''
+  formData.email = ''
+  formData.eventType = ''
+  formData.date = ''
+  formData.message = ''
+  formState.value = 'idle'
+}
+</script>
